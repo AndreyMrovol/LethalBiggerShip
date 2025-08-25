@@ -1,0 +1,35 @@
+[config]
+schemaVersion = "0.0.1"
+
+[general]
+repository = "https://thunderstore.io"
+
+[package]
+namespace = "mrov"
+name = "LethalCompanyTemplate"
+description = "A template for Lethal Company"
+websiteUrl = "https://github.com/AndreyMrovol/LethalCompanyTemplate"
+containsNsfwContent = false
+
+[package.dependencies]
+BepInEx-BepInExPack = "5.4.2100"
+
+[build]
+icon = "../icon.png"
+readme = "../README.md"
+outdir = "../LethalCompanyTemplate/dist"
+
+[[build.copy]]
+source = "../LethalCompanyTemplate/bin/Release/netstandard2.1/LethalCompanyTemplate.dll"
+target = "/"
+
+[[build.copy]]
+source = "../CHANGELOG.md"
+target = "/"
+
+[[build.copy]]
+source = "../LICENSE.md"
+target = "/"
+
+[publish]
+communities = [ "lethal-company", ]
