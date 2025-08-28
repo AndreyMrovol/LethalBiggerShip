@@ -6,9 +6,9 @@ repository = "https://thunderstore.io"
 
 [package]
 namespace = "mrov"
-name = "LethalCompanyTemplate"
+name = "BiggerShip"
 description = "A template for Lethal Company"
-websiteUrl = "https://github.com/AndreyMrovol/LethalCompanyTemplate"
+websiteUrl = "https://github.com/AndreyMrovol/BiggerShip"
 containsNsfwContent = false
 
 [package.dependencies]
@@ -17,10 +17,10 @@ BepInEx-BepInExPack = "5.4.2100"
 [build]
 icon = "../icon.png"
 readme = "../README.md"
-outdir = "../LethalCompanyTemplate/dist"
+outdir = "../BiggerShip/dist"
 
 [[build.copy]]
-source = "../LethalCompanyTemplate/bin/Release/netstandard2.1/LethalCompanyTemplate.dll"
+source = "../BiggerShip/bin/Release/netstandard2.1/BiggerShip.dll"
 target = "/"
 
 [[build.copy]]

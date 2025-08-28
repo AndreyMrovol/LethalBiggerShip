@@ -34,6 +34,8 @@
         <GameDirectory>V:\Steam\steamapps\common\Lethal Company</GameDirectory>
         <LibraryDirectory>../lib</LibraryDirectory>
         <DebugLibraryDirectory>V:\LC-ModLibraries</DebugLibraryDirectory>
+        
+        <DebugProfile>V:\GaleModManager\gale\lethal-company\profiles\Andrey's Testing Profile\BepInEx\plugins\BiggerShip</DebugProfile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -62,12 +64,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <!-- this is not really required -->
-        <!-- <PackageReference Include="TeamBMX.LobbyCompatibility" Version="1.0.1" /> -->
-
-        <!-- <PackageReference Include="Evaisa.LethalLib" Version="0.16.0" /> -->
-
-        <!-- <Reference Include="MMHOOK_Assembly-CSharp"><HintPath>../lib/MMHOOK_Assembly-CSharp.dll</HintPath></Reference> -->
     </ItemGroup>
 
     <!-- minver reference -->
@@ -124,5 +120,12 @@
     <Target Name="CopyToDebugProfile" AfterTargets="NetcodePatch" Condition="'$(Configuration)' == 'Debug'">
         <Message Importance="high" Text="Copying To LibraryDir" />
         <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(DebugLibraryDirectory)" />
+
+        <!-- also copy the asset bundle -->
+        <Copy SourceFiles="$(LibraryDirectory)\..\assets\biggership.assetbundle" DestinationFolder="$(DebugLibraryDirectory)" />
+
+
+        <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(DebugProfile)" />
+        <Copy SourceFiles="$(LibraryDirectory)\..\assets\biggership.assetbundle" DestinationFolder="$(DebugProfile)" />
     </Target>
 </Project>
