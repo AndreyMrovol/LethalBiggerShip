@@ -553,5 +553,3 @@ lib/*
 *.zip
 Thunderstore/*.dll
 */dist/*
-
-/assets/*.assetbundle
