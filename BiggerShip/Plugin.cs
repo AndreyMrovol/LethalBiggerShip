@@ -18,7 +18,7 @@ namespace BiggerShip
 
 		internal static Harmony harmony = new(PluginInfo.PLUGIN_GUID);
 
-		internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
+		// internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
 
 		private void Awake()
 		{
