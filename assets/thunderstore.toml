@@ -24,6 +24,10 @@ source = "../BiggerShip/bin/Release/netstandard2.1/BiggerShip.dll"
 target = "/"
 
 [[build.copy]]
+source = "./biggership.assetbundle"
+target = "/"
+
+[[build.copy]]
 source = "../CHANGELOG.md"
 target = "/"
 
