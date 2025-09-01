@@ -1,12 +1,12 @@
 ﻿using BepInEx.Configuration;
-using BiggerShip.Enums;
 using MrovLib;
+using static BiggerShip.Enums.ChargeStationManager;
+using static BiggerShip.Enums.MagnetLeverManager;
 
 namespace BiggerShip;
 internal class LocalConfigManager : MrovLib.ConfigManager
 {
     internal static ConfigEntry<LoggingType> Debug { get; private set; }
-
     internal static ConfigEntry<ChargeStationPlacement> ChargeStation { get; private set; }
     internal static ConfigEntry<MagnetLeverPlacement> MagnetLever { get; private set; }
     private LocalConfigManager(ConfigFile config)
@@ -15,6 +15,11 @@ internal class LocalConfigManager : MrovLib.ConfigManager
         Debug = configFile.Bind("General", "Logging levels", LoggingType.Basic, "Enable debug logging");
         ChargeStation = configFile.Bind("Placements", "Charge Station", ChargeStationPlacement.Right, "Change the charge station's placement");
         MagnetLever = configFile.Bind("Placements", "Magnet Lever", MagnetLeverPlacement.Front, "Change the magnet lever's placement");
+
+        ChargeStation.SettingChanged += (obj, args) =>
+        {
+            SetChargeStationPlacement(ReplaceVanillaShip.HangarShip, ChargeStation.Value);
+        };
     }
 
     internal static new void Init(ConfigFile config)
