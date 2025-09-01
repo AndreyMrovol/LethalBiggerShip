@@ -14,7 +14,7 @@ namespace BiggerShip
 		// Set this up properly
 		public static void SetChargeStationPlacement(ChargeStationPlacement placement)
 		{
-			var chargeStation = Variables.HangarShip.transform.Find(".ShipModels2b/ChargeStation");
+			var chargeStation = Variables.HangarShip.transform.Find("ShipModels2b/ChargeStation");
 			if (chargeStation == null)
 			{
 				Plugin.logger.LogError("ChargeStation not found on ship!");
