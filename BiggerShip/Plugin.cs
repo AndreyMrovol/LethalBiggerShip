@@ -22,7 +22,7 @@ namespace BiggerShip
 			logger = Logger;
 			harmony.PatchAll();
 
-			LocalConfigManager.Init(Config);
+			ConfigManager.Init(Config);
 
 			debugLogger.LogFatal("Debuglogger test");
 
