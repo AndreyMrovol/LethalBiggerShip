@@ -1,9 +1,6 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using BepInEx.Logging;
-using BiggerShip.Compatibility;
 using HarmonyLib;
-using MrovLib;
 
 namespace BiggerShip
 {
@@ -25,7 +22,7 @@ namespace BiggerShip
 			logger = Logger;
 			harmony.PatchAll();
 
-			LocalConfigManager.Init(Config);
+			ConfigManager.Init(Config);
 
 			debugLogger.LogFatal("Debuglogger test");
 
@@ -39,22 +36,6 @@ namespace BiggerShip
 
 			// Plugin startup logic
 			Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
-		}
-	}
-
-	internal class LocalConfigManager : MrovLib.ConfigManager
-	{
-		public static ConfigEntry<LoggingType> Debug { get; private set; }
-
-		private LocalConfigManager(ConfigFile config)
-			: base(config)
-		{
-			Debug = configFile.Bind("General", "Logging levels", LoggingType.Basic, "Enable debug logging");
-		}
-
-		public static new void Init(ConfigFile config)
-		{
-			Instance = new LocalConfigManager(config);
 		}
 	}
 }

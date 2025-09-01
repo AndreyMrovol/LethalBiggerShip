@@ -2,6 +2,8 @@ namespace BiggerShip.Enums
 {
 	public enum ChargeStationPlacement
 	{
-		Default
+		Right,
+		Left,
+		Front
 	}
 }
