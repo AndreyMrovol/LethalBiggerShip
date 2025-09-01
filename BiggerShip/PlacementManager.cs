@@ -14,14 +14,12 @@ namespace BiggerShip
 		// Set this up properly
 		public static void SetChargeStationPlacement(ChargeStationPlacement placement)
 		{
-			// TODO i would have to pull changes from main and i'm lazy as fuck
-
-			// var chargeStation = Variables.HangarShip.transform.Find(".ShipModels2b/ChargeStation");
-			// if (chargeStation == null)
-			// {
-			// 	Plugin.logger.LogError("ChargeStation not found on ship!");
-			// 	return;
-			// }
+			var chargeStation = Variables.HangarShip.transform.Find(".ShipModels2b/ChargeStation");
+			if (chargeStation == null)
+			{
+				Plugin.logger.LogError("ChargeStation not found on ship!");
+				return;
+			}
 
 			switch (placement)
 			{
@@ -46,16 +44,14 @@ namespace BiggerShip
 			}
 		}
 
-		public static void SetMagnetLeverPlacement(GameObject hangarShip, MagnetLeverPlacement placement)
+		public static void SetMagnetLeverPlacement(MagnetLeverPlacement placement)
 		{
-			// TODO i would have to pull changes from main and i'm lazy as fuck
-
-			// var chargeStation = hangarShip.transform.Find(".../MagnetLever");
-			// if (chargeStation == null)
-			// {
-			// 	Plugin.logger.LogError("Magnet Lever not found on ship!");
-			// 	return;
-			// }
+			var chargeStation = Variables.HangarShip.transform.Find("GiantCylinderMagnet");
+			if (chargeStation == null)
+			{
+				Plugin.logger.LogError("Magnet Lever not found on ship!");
+				return;
+			}
 
 			switch (placement)
 			{
