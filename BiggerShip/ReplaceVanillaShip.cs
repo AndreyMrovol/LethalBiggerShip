@@ -9,7 +9,11 @@ namespace BiggerShip
 {
 	public static class ReplaceVanillaShip
 	{
-		internal static GameObject HangarShip;
+		internal static GameObject HangarShip
+		{
+			get => Variables.HangarShip;
+			set => Variables.HangarShip = value;
+		}
 
 		internal static Dictionary<ShipPart, GameObject> vanillaObjects =
 			new()
