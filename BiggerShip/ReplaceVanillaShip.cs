@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using BiggerShip.Definitions;
 using BiggerShip.Enums;
 using UnityEngine;
 
@@ -15,15 +16,7 @@ namespace BiggerShip
 			set => Variables.HangarShip = value;
 		}
 
-		internal static Dictionary<ShipPart, GameObject> vanillaObjects =
-			new()
-			{
-				{ ShipPart.CatwalkRailLiningB, null },
-				{ ShipPart.CatwalkShip, null },
-				{ ShipPart.ShipRailPosts, null },
-				{ ShipPart.ShipRails, null },
-				{ ShipPart.ShipInside, null }
-			};
+		internal static Dictionary<ShipPart, GameObject> vanillaObjects = [];
 
 		internal static Dictionary<ShipPart, GameObject> replacementObjects = [];
 
@@ -33,14 +26,6 @@ namespace BiggerShip
 		{
 			HangarShip = GameObject.Find("HangarShip");
 
-			vanillaObjects[ShipPart.CatwalkRailLiningB] = HangarShip.transform.Find("CatwalkRailLiningB").gameObject;
-			vanillaObjects[ShipPart.CatwalkRailLining] = HangarShip.transform.Find("CatwalkRailLining").gameObject;
-			vanillaObjects[ShipPart.CatwalkShip] = HangarShip.transform.Find("CatwalkShip").gameObject;
-			vanillaObjects[ShipPart.ShipInside] = HangarShip.transform.Find("ShipInside").gameObject;
-			vanillaObjects[ShipPart.ShipRailPosts] = HangarShip.transform.Find("ShipRailPosts").gameObject;
-			vanillaObjects[ShipPart.ShipRails] = HangarShip.transform.Find("ShipRails").gameObject;
-			// vanillaObjects[ShipPart.SuitRack] = HangarShip.transform.Find("SuitRack").gameObject;
-			vanillaObjects[ShipPart.Railing] = HangarShip.transform.Find("Railing").gameObject;
 			vanillaObjects[ShipPart.Plane_001] = HangarShip.transform.Find("Plane.001").gameObject;
 			vanillaObjects[ShipPart.ShipElectricLights] = HangarShip.transform.Find("ShipElectricLights").gameObject;
 
@@ -57,7 +42,7 @@ namespace BiggerShip
 			List<string> assetNames = biggerShipBundle.GetAllAssetNames().ToList();
 			foreach (string assetName in assetNames)
 			{
-				Plugin.logger.LogWarning($"assetname: {assetName}");
+				Plugin.debugLogger.LogWarning($"assetname: {assetName}");
 			}
 
 			ReplaceVanillaObjects();
@@ -129,6 +114,14 @@ namespace BiggerShip
 				HangarShip.transform.Find("SideMachineryRight").gameObject,
 				HangarShip.transform.Find("LightSwitchContainer").gameObject,
 				HangarShip.transform.Find("MeterBoxDevice.001").gameObject,
+				HangarShip.transform.Find("CatwalkRailLiningB").gameObject,
+				HangarShip.transform.Find("CatwalkRailLining").gameObject,
+				HangarShip.transform.Find("CatwalkShip").gameObject,
+				HangarShip.transform.Find("CatwalkUnderneathSupports").gameObject,
+				HangarShip.transform.Find("ShipInside").gameObject,
+				HangarShip.transform.Find("ShipRailPosts").gameObject,
+				HangarShip.transform.Find("ShipRails").gameObject,
+				HangarShip.transform.Find("Railing").gameObject,
 			];
 
 			foreach (GameObject part in PartsToRemove)
