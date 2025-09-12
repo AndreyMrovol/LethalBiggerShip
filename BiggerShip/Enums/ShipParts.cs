@@ -2,17 +2,12 @@ namespace BiggerShip.Enums
 {
 	public enum ShipPart
 	{
-		CatwalkRailLining,
-		CatwalkRailLiningB,
-		CatwalkShip,
+		Ship,
 		ShipElectricLights,
-		ShipInside,
-		ShipRailPosts,
-		ShipRails,
 		SideMachineries,
 		SuitRack,
 		Pipes,
 		Plane_001,
-		Railing
+		// Railing
 	}
 }

@@ -4,6 +4,5 @@ namespace BiggerShip.Enums
 	{
 		Right,
 		Left,
-		Front
 	}
 }

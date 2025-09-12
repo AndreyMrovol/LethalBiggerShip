@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using UnityEngine;
 
 namespace BiggerShip
 {
@@ -14,6 +15,8 @@ namespace BiggerShip
 		internal static Logger debugLogger = new("Debug", MrovLib.LoggingType.Developer);
 
 		internal static Harmony harmony = new(PluginInfo.PLUGIN_GUID);
+
+		internal static AssetBundle biggerShipBundle;
 
 		// internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
 

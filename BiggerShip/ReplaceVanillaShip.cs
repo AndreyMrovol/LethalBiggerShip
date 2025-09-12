@@ -29,9 +29,16 @@ namespace BiggerShip
 			vanillaObjects[ShipPart.Plane_001] = HangarShip.transform.Find("Plane.001").gameObject;
 			vanillaObjects[ShipPart.ShipElectricLights] = HangarShip.transform.Find("ShipElectricLights").gameObject;
 
-			string pluginPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			string assetBundlePath = Path.Combine(pluginPath, "biggership.assetbundle");
-			biggerShipBundle = AssetBundle.LoadFromFile(assetBundlePath);
+			if (Plugin.biggerShipBundle == null)
+			{
+				string pluginPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+				string assetBundlePath = Path.Combine(pluginPath, "biggership.assetbundle");
+				biggerShipBundle = AssetBundle.LoadFromFile(assetBundlePath);
+			}
+			else
+			{
+				biggerShipBundle = Plugin.biggerShipBundle;
+			}
 
 			if (biggerShipBundle == null)
 			{
@@ -95,122 +102,81 @@ namespace BiggerShip
 
 		public static void AlignShipPartsToBiggerShip()
 		{
-			#region Remove parts
-			List<GameObject> PartsToRemove =
+			List<ObjectNewPosition> newPositions =
 			[
-				HangarShip.transform.Find("RightmostSuitPlacement").gameObject,
-				HangarShip.transform.Find("WallInsulator").gameObject,
-				HangarShip.transform.Find("WallInsulator2").gameObject,
-				HangarShip.transform.Find("StickyNoteItem").gameObject,
-				// HangarShip.transform.Find("ClipboardManual").gameObject,
-				HangarShip.transform.Find("Pipework2.002").gameObject,
-				HangarShip.transform.Find("NurbsPath.002").gameObject,
-				HangarShip.transform.Find("NurbsPath.004").gameObject,
-				HangarShip.transform.Find("Cube.005").gameObject,
-				HangarShip.transform.Find("Cube.006").gameObject,
-				HangarShip.transform.Find("Cube.007").gameObject,
-				HangarShip.transform.Find("Cube.008").gameObject,
-				HangarShip.transform.Find("SideMachineryLeft").gameObject,
-				HangarShip.transform.Find("SideMachineryRight").gameObject,
-				HangarShip.transform.Find("LightSwitchContainer").gameObject,
-				HangarShip.transform.Find("MeterBoxDevice.001").gameObject,
-				HangarShip.transform.Find("CatwalkRailLiningB").gameObject,
-				HangarShip.transform.Find("CatwalkRailLining").gameObject,
-				HangarShip.transform.Find("CatwalkShip").gameObject,
-				HangarShip.transform.Find("CatwalkUnderneathSupports").gameObject,
-				HangarShip.transform.Find("ShipInside").gameObject,
-				HangarShip.transform.Find("ShipRailPosts").gameObject,
-				HangarShip.transform.Find("ShipRails").gameObject,
-				HangarShip.transform.Find("Railing").gameObject,
+				new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-5.548f, 2.188f, -10.446f) },
+				new() { Name = "CatwalkRailLining" },
+				new() { Name = "CatwalkRailLiningB" },
+				new() { Name = "CatwalkShip" },
+				new() { Name = "CatwalkUnderneathSupports" },
+				new() { Name = "Cube.005" },
+				new() { Name = "Cube.006" },
+				new() { Name = "Cube.007" },
+				new() { Name = "Cube.008" },
+				new() { Name = "GiantCylinderMagnet", Position = new Vector3(2.5f, 2.44f, -11.1f) },
+				new() { Name = "LadderShort (1)", Position = new Vector3(-7, -2.30100012f, -12.0609999f) },
+				new() { Name = "LightSwitchContainer" },
+				new() { Name = "MeterBoxDevice.001" },
+				new() { Name = "NurbsPath.002" },
+				new() { Name = "NurbsPath.004" },
+				new() { Name = "OutsideShipRoom/Ladder", Position = new Vector3(-0.1785f, -0.1324f, -2.65f) },
+				new() { Name = "Pipework2.002" },
+				new() { Name = "Railing" },
+				new() { Name = "RightmostSuitPlacement" },
+				new() { Name = "ScavengerModelSuitParts/Circle.004", Position = new Vector3(-7.26f, -3.37f, -3.98f) },
+				new() { Name = "ShipElectricLights/LightSwitchContainer", Position = new Vector3(0.9935f, 1.4172f, -3.036f) },
+				new()
+				{
+					Name = "ShipInnerRoomBoundsTrigger",
+					Position = new Vector3(1.4367f, 1.781f, -6.7f),
+					Scale = new Vector3(17.523226f, 5.341722f, 7.51f)
+				},
+				new() { Name = "ShipInside" },
+				new() { Name = "ShipInside.001" },
+				new() { Name = "ShipModels2b/ChargeStation", Position = new Vector3(0.957f, 1.2561f, -4.802f) },
+				new() { Name = "ShipModels2b/Cube.005 (1)", Position = new Vector3(-6.192f, 2.637f, -5.18f) },
+				new() { Name = "ShipModels2b/Cube.005 (2)", Position = new Vector3(-6.29f, 2.64f, -5.18f) },
+				new()
+				{
+					Name = "ShipModels2b/Light",
+					Position = new Vector3(-6.1517f, 3.23f, -4.5148f),
+					Rotation = new Vector3(270, 180, 0)
+				},
+				new() { Name = "ShipModels2b/Light (1)", Position = new Vector3(1.0879f, 3.0727f, -11.4066f) },
+				new() { Name = "ShipModels2b/Light (2)", Position = new Vector3(-6.1443f, 3.25f, -11.063f) },
+				new()
+				{
+					Name = "ShipModels2b/Light (3)",
+					Position = new Vector3(1.0957f, 3.13f, -4.399f),
+					Rotation = new Vector3(270, 0, 0)
+				},
+				new() { Name = "ShipModels2b/MonitorWall/SingleScreen", Position = new Vector3(-11.92f, -1.267f, -5.525f) },
+				new() { Name = "ShipRailPosts" },
+				new() { Name = "ShipRails" },
+				new() { Name = "SideMachineryLeft" },
+				new() { Name = "SideMachineryRight" },
+				new() { Name = "StorageCloset", Position = new Vector3(-3.5308f, -0.0982f, -2.9853f) },
+				new() { Name = "Terminal", Position = new Vector3(6.3114f, 0.9263f, -9.2735f) },
+				new() { Name = "VentEntrance", Position = new Vector3(1.499f, 0.693f, -10.473f) },
+				new() { Name = "WallInsulator" },
+				new() { Name = "WallInsulator2" },
 			];
 
-			foreach (GameObject part in PartsToRemove)
+			foreach (ObjectNewPosition newPos in newPositions)
 			{
-				if (part != null)
-				{
-					Plugin.debugLogger.LogDebug($"Removing part: {part.name}");
-					GameObject.Destroy(part);
-				}
-				else
-				{
-					Plugin.logger.LogWarning("Part to remove not found, skipping.");
-				}
+				PlacementManager.SetNewPlacement(newPos);
 			}
 
-			#endregion
-
-
-
-			#region Move parts
-
-			// Align replacement parts to the bigger ship
-			Dictionary<string, Vector3> objectsToMove =
-				new()
-				{
-					{ "GiantCylinderMagnet", new(2.5f, 2.74f, -11.1f) },
-					{ "ScavengerModelSuitParts/Circle.004", new(-7.26f, -3.37f, -3.98f) },
-					{ "AnimatedShipDoor/HangarDoorButtonPanel", new(-5.548f, 2.188f, -10.446f) },
-					{ "ShipModels2b/MonitorWall/SingleScreen", new(-11.92f, -1.267f, -5.525f) },
-					{ "OutsideShipRoom/Ladder", new(-0.1785f, -0.1324f, -2.65f) },
-					{ "StorageCloset", new(-3.5308f, -0.0982f, -2.9853f) },
-					{ "ShipElectricLights/LightSwitchContainer", new(0.9935f, 1.4172f, -3.036f) },
-					{ "ShipModels2b/ChargeStation", new(0.957f, 1.2561f, -4.802f) },
-					{ "VentEntrance", new(1.499f, 0.693f, -10.473f) },
-					{ "ShipModels2b/Cube.005 (2)", new(-6.29f, 2.64f, -5.18f) },
-					{ "ShipModels2b/Cube.005 (1)", new(-6.192f, 2.637f, -5.18f) },
-					{ "Terminal", new(6.3114f, 0.9263f, -9.2735f) },
-					{ "LadderShort (1)", new(-7, -2.30100012f, -12.0609999f) },
-					{ "ShipModels2b/Light", new(-6.1517f, 3.23f, -4.5148f) },
-					{ "ShipModels2b/Light (1)", new(1.0879f, 3.0727f, -11.4066f) },
-					{ "ShipModels2b/Light (2)", new(-6.1443f, 3.25f, -11.063f) },
-					{ "ShipModels2b/Light (3)", new(1.0957f, 3.13f, -4.399f) },
-				};
-
-			foreach (KeyValuePair<string, Vector3> entry in objectsToMove)
+			// get positions of magnet and charger from config
+			if (ConfigManager.MagnetLever.Value != MagnetLeverPlacement.Back)
 			{
-				GameObject part = HangarShip.transform.Find(entry.Key)?.gameObject;
-				if (part != null)
-				{
-					if (part.GetComponent<AutoParentToShip>() != null)
-					{
-						part.GetComponent<AutoParentToShip>().positionOffset = entry.Value;
-					}
+				MagnetLeverPlacement placement = ConfigManager.MagnetLever.Value;
 
-					part.transform.localPosition = entry.Value;
-				}
-				else
+				if (PlacementManager.MagnetLeverPositions.TryGetValue(placement, out ObjectNewPosition newPos))
 				{
-					Plugin.debugLogger.LogWarning($"Part not found for alignment: {entry.Key}");
+					PlacementManager.SetNewPlacement(newPos);
 				}
 			}
-
-			#endregion
-
-			#region Rotate parts
-
-			Dictionary<string, Vector3> objectsToRotate =
-				new()
-				{
-					//
-					{ "ShipModels2b/Light", new(270, 180, 0) },
-					{ "ShipModels2b/Light (3)", new(270, 0, 0) },
-				};
-
-			foreach (KeyValuePair<string, Vector3> entry in objectsToRotate)
-			{
-				GameObject part = HangarShip.transform.Find(entry.Key)?.gameObject;
-				if (part != null)
-				{
-					part.transform.localEulerAngles = entry.Value;
-				}
-				else
-				{
-					Plugin.debugLogger.LogWarning($"Part not found for alignment: {entry.Key}");
-				}
-			}
-
-			#endregion
-
 
 			return;
 		}
