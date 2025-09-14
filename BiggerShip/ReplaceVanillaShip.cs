@@ -77,7 +77,11 @@ namespace BiggerShip
 
 					if (vanillaObject == null)
 					{
-						Plugin.logger.LogError($"Vanilla object for {shipPart} is null, skipping replacement.");
+						Plugin.debugLogger.LogCustom(
+							$"Vanilla object for {shipPart} is null, skipping replacement.",
+							BepInEx.Logging.LogLevel.Warning,
+							MrovLib.LoggingType.Debug
+						);
 						continue;
 					}
 
