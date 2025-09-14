@@ -16,8 +16,6 @@ namespace BiggerShip.Patches
 			UnlockableSuit[] unlockableSuits = GameObject.FindObjectsOfType<UnlockableSuit>();
 			UnlockableSuit[] array = unlockableSuits.OrderBy(suit => suit.syncedSuitID.Value).ToArray();
 
-			Plugin.logger.LogError(array.Length);
-
 			for (int i = 0; i < array.Length; i++)
 			{
 				UnlockableItem unlockableItem = array[i].GetComponent<UnlockableItem>();
