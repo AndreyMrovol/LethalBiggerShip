@@ -27,6 +27,11 @@ namespace BiggerShip
 
 			ConfigManager.Init(Config);
 
+#if DEBUG
+			Plugin.logger.LogWarning("Dev build detected, enabling full debug logging.");
+			ConfigManager.Debug.Value = MrovLib.LoggingType.Developer;
+#endif
+
 			debugLogger.LogFatal("Debuglogger test");
 
 			MrovLib.EventManager.SceneLoaded.AddListener(scene =>
