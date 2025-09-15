@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,33 +21,28 @@ namespace BiggerShip
 
 		internal static Dictionary<ShipPart, GameObject> replacementObjects = [];
 
-		private static AssetBundle biggerShipBundle;
-
 		public static void Init()
 		{
 			HangarShip = GameObject.Find("HangarShip");
 
 			vanillaObjects[ShipPart.Plane_001] = HangarShip.transform.Find("Plane.001").gameObject;
 			vanillaObjects[ShipPart.ShipElectricLights] = HangarShip.transform.Find("ShipElectricLights").gameObject;
+			// vanillaObjects[ShipPart.AnimatedShipDoor] = HangarShip.transform.Find("AnimatedShipDoor").gameObject;
 
-			if (Plugin.biggerShipBundle == null)
+			if (Variables.BiggerShipBundle == null)
 			{
 				string pluginPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 				string assetBundlePath = Path.Combine(pluginPath, "biggership.assetbundle");
-				biggerShipBundle = AssetBundle.LoadFromFile(assetBundlePath);
-			}
-			else
-			{
-				biggerShipBundle = Plugin.biggerShipBundle;
+				Variables.BiggerShipBundle = AssetBundle.LoadFromFile(assetBundlePath);
+
+				if (Variables.BiggerShipBundle == null)
+				{
+					Plugin.logger.LogError("Failed to load AssetBundle!!!");
+					return;
+				}
 			}
 
-			if (biggerShipBundle == null)
-			{
-				Plugin.logger.LogError("Failed to load AssetBundle!");
-				return;
-			}
-
-			List<string> assetNames = biggerShipBundle.GetAllAssetNames().ToList();
+			List<string> assetNames = Variables.BiggerShipBundle.GetAllAssetNames().ToList();
 			foreach (string assetName in assetNames)
 			{
 				Plugin.debugLogger.LogWarning($"assetname: {assetName}");
@@ -65,7 +61,7 @@ namespace BiggerShip
 				GameObject vanillaObject = vanillaObjects.TryGetValue(shipPart, out GameObject obj) ? obj : null;
 				string assetName = assetPath + shipPart.ToString().ToLowerInvariant() + "extended.prefab";
 
-				GameObject newPart = biggerShipBundle.LoadAsset<GameObject>(assetName);
+				GameObject newPart = Variables.BiggerShipBundle.LoadAsset<GameObject>(assetName);
 				if (newPart != null)
 				{
 					GameObject instantiatedPart = GameObject.Instantiate(newPart, HangarShip.transform);
@@ -108,7 +104,7 @@ namespace BiggerShip
 		{
 			List<ObjectNewPosition> newPositions =
 			[
-				new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-5.548f, 2.188f, -10.446f) },
+				new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-6f, 2.188f, -10.446f) },
 				new() { Name = "CatwalkRailLining" },
 				new() { Name = "CatwalkRailLiningB" },
 				new() { Name = "CatwalkShip" },
@@ -118,12 +114,18 @@ namespace BiggerShip
 				new() { Name = "Cube.007" },
 				new() { Name = "Cube.008" },
 				new() { Name = "GiantCylinderMagnet", Position = new Vector3(2.5f, 2.44f, -11.1f) },
-				new() { Name = "LadderShort (1)", Position = new Vector3(-7, -2.30100012f, -12.0609999f) },
+				new() { Name = "LadderShort", Position = new Vector3(6.63f, -2.48f, -0.38f) },
+				new() { Name = "LadderShort (1)", Position = new Vector3(-7f, -2.4955f, -12.2756f) },
 				new() { Name = "LightSwitchContainer" },
 				new() { Name = "MeterBoxDevice.001" },
 				new() { Name = "NurbsPath.002" },
 				new() { Name = "NurbsPath.004" },
-				new() { Name = "OutsideShipRoom/Ladder", Position = new Vector3(-0.1785f, -0.1324f, -2.65f) },
+				new()
+				{
+					Name = "OutsideShipRoom/Ladder",
+					Position = new Vector3(-0.1785f, -0.1324f, -2.65f),
+					Scale = new Vector3(0.5805f, 0.541f, 0.5805f)
+				},
 				new() { Name = "Pipework2.002" },
 				new() { Name = "Railing" },
 				new() { Name = "RightmostSuitPlacement" },
@@ -146,15 +148,15 @@ namespace BiggerShip
 					Position = new Vector3(-6.1517f, 3.23f, -4.5148f),
 					Rotation = new Vector3(270, 180, 0)
 				},
-				new() { Name = "ShipModels2b/Light (1)", Position = new Vector3(1.0879f, 3.0727f, -11.4066f) },
-				new() { Name = "ShipModels2b/Light (2)", Position = new Vector3(-6.1443f, 3.25f, -11.063f) },
+				new() { Name = "ShipModels2b/Light (1)", Position = new Vector3(1.0879f, 3.0727f, -11.8577f) },
+				new() { Name = "ShipModels2b/Light (2)", Position = new Vector3(-6.1443f, 3.25f, -10.9433f) },
 				new()
 				{
 					Name = "ShipModels2b/Light (3)",
 					Position = new Vector3(1.0957f, 3.13f, -4.399f),
 					Rotation = new Vector3(270, 0, 0)
 				},
-				new() { Name = "ShipModels2b/MonitorWall/SingleScreen", Position = new Vector3(-11.92f, -1.267f, -5.525f) },
+				new() { Name = "ShipModels2b/MonitorWall/SingleScreen", Position = new Vector3(-12.269f, -1.267f, -5.525f) },
 				new() { Name = "ShipRailPosts" },
 				new() { Name = "ShipRails" },
 				new() { Name = "SideMachineryLeft" },

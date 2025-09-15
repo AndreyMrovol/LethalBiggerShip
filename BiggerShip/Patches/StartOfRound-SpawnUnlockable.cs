@@ -13,6 +13,12 @@ namespace BiggerShip.Patches
 		[HarmonyPostfix]
 		public static void AdjustSuitPosition(StartOfRound __instance)
 		{
+			if (Variables.BiggerShipBundle == null)
+			{
+				Plugin.logger.LogError("BiggerShipBundle is null, skipping!");
+				return;
+			}
+
 			UnlockableSuit[] unlockableSuits = GameObject.FindObjectsOfType<UnlockableSuit>();
 			UnlockableSuit[] array = unlockableSuits.OrderBy(suit => suit.syncedSuitID.Value).ToArray();
 

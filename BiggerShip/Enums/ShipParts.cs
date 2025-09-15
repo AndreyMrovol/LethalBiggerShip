@@ -8,6 +8,5 @@ namespace BiggerShip.Enums
 		SuitRack,
 		Pipes,
 		Plane_001,
-		// Railing
 	}
 }

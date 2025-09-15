@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using BiggerShip.Definitions;
 using BiggerShip.Enums;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace BiggerShip
 			new()
 			{
 				{
-					MagnetLeverPlacement.FrontDoor,
+					MagnetLeverPlacement.Front,
 					new ObjectNewPosition
 					{
 						Name = "MagnetLever",
@@ -20,16 +21,6 @@ namespace BiggerShip
 						Rotation = new Vector3(90f, 180f, 0f),
 					}
 				},
-				// {
-				// 	MagnetLeverPlacement.FrontLadder,
-				// 	new ObjectNewPosition
-				// 	{
-				// 		Name = "MagnetLever",
-				// 		Position = new Vector3(-5.2773f, 3.014f, -10.62f),
-				// 		Rotation = new Vector3(90f, 90f, 0f),
-				// 		Scale = new Vector3(1.2141f, 1.4141f, 1.4141f)
-				// 	}
-				// },
 				{
 					MagnetLeverPlacement.Back,
 					new ObjectNewPosition
@@ -51,7 +42,19 @@ namespace BiggerShip
 				},
 			};
 
-		public static Dictionary<ChargeStationPlacement, ObjectNewPosition> ChargeStationPositions = new() { };
+		public static Dictionary<ChargeStationPlacement, ObjectNewPosition> ChargeStationPositions =
+			new()
+			{
+				{
+					ChargeStationPlacement.Left,
+					new ObjectNewPosition
+					{
+						Name = "ShipModels2b/ChargeStation",
+						Position = new Vector3(-5.9898f, 1.2561f, -4.902f),
+						Rotation = new Vector3(270f, 180f, 0f),
+					}
+				},
+			};
 
 		public static void SetNewPlacement(ObjectNewPosition position)
 		{
@@ -62,9 +65,12 @@ namespace BiggerShip
 				return;
 			}
 
+			StringBuilder logMessage = new();
+			logMessage.Append($"{position.Name}: ");
+
 			if (position.ToRemove)
 			{
-				Plugin.debugLogger.LogDebug($"Removing object: {position.Name}");
+				logMessage.Append("has been removed.");
 				GameObject.Destroy(transform.gameObject);
 				return;
 			}
@@ -80,20 +86,22 @@ namespace BiggerShip
 					ShipPart.GetComponent<AutoParentToShip>().positionOffset = position.Position;
 				}
 
-				Plugin.debugLogger.LogDebug($"Moved {position.Name} to {position.Position}");
+				logMessage.Append("position: " + position.Position.ToString() + "; ");
 			}
 
 			if (position.Rotation != Vector3.zero)
 			{
 				transform.localEulerAngles = position.Rotation;
-				Plugin.debugLogger.LogDebug($"Rotated {position.Name} to {position.Rotation}");
+				logMessage.Append("rotation: " + position.Rotation.ToString() + "; ");
 			}
 
 			if (position.Scale != Vector3.zero)
 			{
 				transform.localScale = position.Scale;
-				Plugin.debugLogger.LogDebug($"Scaled {position.Name} to {position.Scale}");
+				logMessage.Append("scale: " + position.Scale.ToString() + "; ");
 			}
+
+			Plugin.debugLogger.LogDebug(logMessage.ToString());
 		}
 	}
 }

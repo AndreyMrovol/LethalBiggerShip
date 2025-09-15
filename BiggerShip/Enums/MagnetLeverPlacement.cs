@@ -3,7 +3,7 @@ namespace BiggerShip.Enums
 	public enum MagnetLeverPlacement
 	{
 		Back,
-		FrontDoor,
+		Front,
 		Inside
 	}
 }
