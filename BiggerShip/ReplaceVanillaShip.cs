@@ -97,6 +97,11 @@ namespace BiggerShip
 				.transform.Find("ShipElectricLights")
 				.GetComponentInChildren<ShipLights>();
 
+			if (ConfigManager.ShipRibs.Value == false)
+			{
+				replacementObjects[ShipPart.Ship].transform.Find("ShipExtended/ShipWalls/ShipRibs").gameObject.SetActive(false);
+			}
+
 			Plugin.logger.LogInfo("Replaced vanilla ship parts with bigger versions.");
 		}
 

@@ -7,8 +7,11 @@ namespace BiggerShip;
 internal class ConfigManager
 {
 	internal static ConfigEntry<LoggingType> Debug { get; private set; }
+
 	internal static ConfigEntry<ChargeStationPlacement> ChargeStation { get; private set; }
 	internal static ConfigEntry<MagnetLeverPlacement> MagnetLever { get; private set; }
+
+	internal static ConfigEntry<bool> ShipRibs { get; private set; }
 
 	public static ConfigManager Instance { get; private set; }
 	public static ConfigFile configFile;
@@ -20,6 +23,8 @@ internal class ConfigManager
 
 		ChargeStation = configFile.Bind("Placement", "Charge Station", ChargeStationPlacement.Right, "Change the charge station's placement");
 		MagnetLever = configFile.Bind("Placement", "Magnet Lever", MagnetLeverPlacement.Back, "Change the magnet lever's placement");
+
+		ShipRibs = configFile.Bind("Details", "Ribs", true, "Should the ship have ribs?");
 	}
 
 	internal static void Init(ConfigFile config)
