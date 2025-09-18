@@ -199,6 +199,15 @@ namespace BiggerShip
 				}
 			}
 
+			DoorControlPanelPlacement doorPlacement = ConfigManager.DoorControlPanel.Value;
+			if (PlacementManager.DoorControlPanelPositions.TryGetValue(doorPlacement, out List<ObjectNewPosition> newDoorPos))
+			{
+				foreach (ObjectNewPosition pos in newDoorPos)
+				{
+					PlacementManager.SetNewPlacement(pos);
+				}
+			}
+
 			return;
 		}
 	}

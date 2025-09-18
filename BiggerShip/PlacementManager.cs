@@ -56,6 +56,27 @@ namespace BiggerShip
 				},
 			};
 
+		public static Dictionary<DoorControlPanelPlacement, List<ObjectNewPosition>> DoorControlPanelPositions =
+			new()
+			{
+				{
+					DoorControlPanelPlacement.Vanilla,
+					new List<ObjectNewPosition>
+					{
+						new() { Name = "ShipModels2b/MonitorWall/SingleScreen", Position = new Vector3(-11.798f, -1.186f, -5.1814f), },
+						new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-5.4f, 2.2f, -10.1f) }
+					}
+				},
+				{
+					DoorControlPanelPlacement.Compact,
+					new List<ObjectNewPosition>
+					{
+						new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-6f, 2.188f, -10.446f) },
+						new() { Name = "ShipModels2b/MonitorWall/SingleScreen", Position = new Vector3(-12.269f, -1.267f, -5.525f) },
+					}
+				}
+			};
+
 		public static void SetNewPlacement(ObjectNewPosition position)
 		{
 			Transform transform = Variables.HangarShip.transform.Find(position.Name);
