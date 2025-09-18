@@ -189,6 +189,16 @@ namespace BiggerShip
 				}
 			}
 
+			if (ConfigManager.ChargeStation.Value != ChargeStationPlacement.Right)
+			{
+				ChargeStationPlacement placement = ConfigManager.ChargeStation.Value;
+
+				if (PlacementManager.ChargeStationPositions.TryGetValue(placement, out ObjectNewPosition newPos))
+				{
+					PlacementManager.SetNewPlacement(newPos);
+				}
+			}
+
 			return;
 		}
 	}
