@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using BiggerShip.Compatibility;
 using HarmonyLib;
 using UnityEngine;
 
@@ -8,8 +9,9 @@ namespace BiggerShip
 	[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
 	[BepInIncompatibility("mborsh.WiderShipMod")]
 	[BepInIncompatibility("MelanieMelicious.2StoryShip")]
-	[BepInDependency("TestAccount666.ShipWindows", BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency("MrovLib", BepInDependency.DependencyFlags.HardDependency)]
+	[BepInDependency("TestAccount666.ShipWindows", BepInDependency.DependencyFlags.SoftDependency)]
+	[BepInDependency("ScienceBird.ScienceBirdTweaks", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Plugin : BaseUnityPlugin
 	{
 		internal static ManualLogSource logger;
@@ -18,6 +20,7 @@ namespace BiggerShip
 		internal static Harmony harmony = new(PluginInfo.PLUGIN_GUID);
 
 		// internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
+		internal static ScienceBirdTweaksCompat ScienceBirdTweaksCompat = new("ScienceBird.ScienceBirdTweaks");
 
 		private void Awake()
 		{
@@ -31,7 +34,6 @@ namespace BiggerShip
 			ConfigManager.Debug.Value = MrovLib.LoggingType.Developer;
 			// #endif
 
-			debugLogger.LogFatal("Debuglogger test");
 
 			MrovLib.EventManager.SceneLoaded.AddListener(scene =>
 			{
@@ -40,6 +42,8 @@ namespace BiggerShip
 					ReplaceVanillaShip.Init();
 				}
 			});
+
+			ScienceBirdTweaksCompat.Init();
 
 			// Plugin startup logic
 			Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
