@@ -23,9 +23,6 @@ namespace BiggerShip
 				return;
 			}
 
-			Plugin.logger.LogInfo(EnvironmentObject);
-			Plugin.logger.LogInfo(EnvironmentObject.scene.name);
-
 			RemoveVanillaNavmesh(EnvironmentObject);
 			ChangeOffMeshLinks(EnvironmentObject);
 
