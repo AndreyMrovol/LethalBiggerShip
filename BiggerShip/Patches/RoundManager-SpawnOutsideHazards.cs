@@ -1,5 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using BiggerShip.Enums;
 using HarmonyLib;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BiggerShip.Patches
 {

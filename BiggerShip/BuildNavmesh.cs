@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace BiggerShip
 {
 	internal class BuildNavmesh
 	{
+		private static Dictionary<GameObject, Vector3> OriginalOffMeshLinkPositions = [];
+
 		public static void ReplaceNavmeshes()
 		{
 			Stopwatch stopwatch = new();
@@ -38,18 +41,13 @@ namespace BiggerShip
 
 			// remove old ship offlinks
 			Transform ShipOffMeshLinks = NavmeshColliders.transform.Find("OffMeshLinks");
-			ShipOffMeshLinks.Find("ShipLadder").gameObject.SetActive(false);
-			ShipOffMeshLinks.Find("ShipLadder2").gameObject.SetActive(false);
+
+			ShipOffMeshLinks.Find("ShipLadder")?.gameObject.SetActive(false);
+			ShipOffMeshLinks.Find("ShipLadder2")?.gameObject.SetActive(false);
 
 			// remove old ship navmesh
 			Transform PlayerShipNavmesh = NavmeshColliders.transform.Find("PlayerShipNavmesh");
-			if (PlayerShipNavmesh == null)
-			{
-				Plugin.debugLogger.LogWarning("No PlayerShipNavmesh found under NavmeshColliders");
-				return;
-			}
-
-			PlayerShipNavmesh.gameObject.SetActive(false);
+			PlayerShipNavmesh?.gameObject.SetActive(false);
 		}
 
 		public static void ChangeOffMeshLinks(GameObject Environment)
@@ -62,6 +60,7 @@ namespace BiggerShip
 				OffMeshLink link = child.GetComponent<OffMeshLink>();
 
 				Vector3 OldEndPos = link.endTransform.localPosition;
+				OriginalOffMeshLinkPositions[child.gameObject] = OldEndPos;
 
 				if (
 					Physics.Raycast(
@@ -90,6 +89,22 @@ namespace BiggerShip
 		public static void RebuildNavmesh(GameObject Environment)
 		{
 			Environment.GetComponent<NavMeshSurface>().BuildNavMesh();
+		}
+
+		public static void RestoreOffMeshLinks()
+		{
+			foreach (var kvp in OriginalOffMeshLinkPositions)
+			{
+				if (kvp.Key != null)
+				{
+					OffMeshLink link = kvp.Key.GetComponent<OffMeshLink>();
+					if (link != null)
+					{
+						link.endTransform.localPosition = kvp.Value;
+						link.UpdatePositions();
+					}
+				}
+			}
 		}
 	}
 }

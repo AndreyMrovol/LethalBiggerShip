@@ -12,7 +12,7 @@ internal class ConfigManager
 	internal static ConfigEntry<MagnetLeverPlacement> MagnetLever { get; private set; }
 	internal static ConfigEntry<DoorControlPanelPlacement> DoorControlPanel { get; private set; }
 
-	internal static ConfigEntry<bool> ShipRibs { get; private set; }
+	// internal static ConfigEntry<bool> ShipRibs { get; private set; }
 
 	public static ConfigManager Instance { get; private set; }
 	public static ConfigFile configFile;
@@ -23,7 +23,7 @@ internal class ConfigManager
 		Debug = configFile.Bind("General", "Logging levels", LoggingType.Basic, "Enable debug logging");
 
 		ChargeStation = configFile.Bind("Placement", "Charge Station", ChargeStationPlacement.Right, "Change the charge station's placement");
-		MagnetLever = configFile.Bind("Placement", "Magnet Lever", MagnetLeverPlacement.Back, "Change the magnet lever's placement");
+		MagnetLever = configFile.Bind("Placement", "Magnet Lever", MagnetLeverPlacement.Front, "Change the magnet lever's placement");
 		DoorControlPanel = configFile.Bind(
 			"Placement",
 			"Door Control Panel",
@@ -31,7 +31,7 @@ internal class ConfigManager
 			"Change the door control panel's placement"
 		);
 
-		ShipRibs = configFile.Bind("Placement", "Ribs", true, "Should the ship have ribs?");
+		// ShipRibs = configFile.Bind("Placement", "Ribs", true, "Should the ship have ribs?");
 	}
 
 	internal static void Init(ConfigFile config)

@@ -8,6 +8,7 @@ namespace BiggerShip.Patches
 	{
 		[HarmonyPrefix]
 		[HarmonyPatch(typeof(StartOfRound), "Start")]
+		[HarmonyBefore("TooManySuits", "mrov.TooManySuits")]
 		public static void ChangeRightMostPosition(StartOfRound __instance)
 		{
 			Plugin.debugLogger.LogDebug("Patching StartOfRound.Start");

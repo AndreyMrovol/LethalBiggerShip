@@ -97,10 +97,10 @@ namespace BiggerShip
 				.transform.Find("ShipElectricLights")
 				.GetComponentInChildren<ShipLights>();
 
-			if (ConfigManager.ShipRibs.Value == false)
-			{
-				replacementObjects[ShipPart.Ship].transform.Find("ShipExtended/ShipWalls/ShipRibs").gameObject.SetActive(false);
-			}
+			// if (ConfigManager.ShipRibs.Value == false)
+			// {
+			// 	replacementObjects[ShipPart.Ship].transform.Find("ShipExtended/ShipWalls/ShipRibs").gameObject.SetActive(false);
+			// }
 
 			Plugin.logger.LogInfo("Replaced vanilla ship parts with bigger versions.");
 		}
@@ -110,6 +110,7 @@ namespace BiggerShip
 			List<ObjectNewPosition> newPositions =
 			[
 				new() { Name = "AnimatedShipDoor/HangarDoorButtonPanel", Position = new Vector3(-6f, 2.188f, -10.446f) },
+				new() { Name = "BezierCurve", }, // this is the pipe going out of the generator - needs remodelling
 				new() { Name = "CatwalkRailLining" },
 				new() { Name = "CatwalkRailLiningB" },
 				new() { Name = "CatwalkShip" },
@@ -166,6 +167,7 @@ namespace BiggerShip
 				new() { Name = "ShipRails" },
 				new() { Name = "SideMachineryLeft" },
 				new() { Name = "SideMachineryRight" },
+				new() { Name = "Square" },
 				new() { Name = "StorageCloset", Position = new Vector3(-3.2237f, -0.1303f, -3.3999f) },
 				new() { Name = "Terminal", Position = new Vector3(6.2022f, 0.9266f, -9.3018f) },
 				new() { Name = "VentEntrance", Position = new Vector3(1.499f, 0.693f, -10.473f) },
