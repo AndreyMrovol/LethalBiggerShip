@@ -71,6 +71,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Reference Include="ScienceBirdTweaks" PrivateAssets="all" Publicize="true">
+            <HintPath>$(LibraryDirectory)/ScienceBird.ScienceBirdTweaks.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <!-- minver reference -->
