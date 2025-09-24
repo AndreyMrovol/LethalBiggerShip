@@ -107,6 +107,22 @@
         </PropertyGroup>
     </Target>
 
+    <!-- Target to download dependencies -->
+    <Target Name="DownloadDependencies" Condition="'$(Configuration)'=='Release'" BeforeTargets="BeforeBuild">
+        <MakeDir Directories="$(ProjectDir)$(LibraryDirectory)" Condition="!Exists('$(ProjectDir)$(LibraryDirectory)')" />
+        <Exec Command="node $(ProjectDir)../downloader.js $(TomlFile) $(LibraryDirectory)" />
+    </Target>
+
+    <Target Name="CopyLocalDependencies" AfterTargets="DownloadDependencies" Condition="'$(Configuration)'=='Release'">
+        <!-- copy all files from ../assets/lib into ../lib -->
+
+        <ItemGroup>
+            <LibraryFiles Include="$(ProjectDir)../assets/lib/*" />
+        </ItemGroup>
+
+        <Copy SourceFiles="@(LibraryFiles)" DestinationFolder="$(LibraryDirectory)" />
+    </Target>
+
     <!-- create thunderstore zip -->
     <Target Name="PackThunderstore" DependsOnTargets="NetcodePatch;SetPluginVersion" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
         <MakeDir Directories="$(ProjectDir)../assets/bundles" Condition="!Exists('$(ProjectDir)../assets/bundles')" />

@@ -1,5 +1,15 @@
 [libraries]
 
 # [[library]]
-# name = "LethalLevelLoader"
-# url = "https://thunderstore.io/package/download/IAmBatby/LethalLevelLoader/1.2.4/"
+# name = "ShipWindows"
+# url = "https://thunderstore.io/package/download/TestAccount666/ShipWindows/2.5.1/"
+
+
+# [[library]]
+# name = "TooManySuits"
+# url = "https://thunderstore.io/package/download/TestAccount666/ShipWindows/2.5.1/"
+
+
+[[library]]
+name = "ScienceBirdTweaks"
+url = "https://thunderstore.io/package/download/ScienceBird/ScienceBird_Tweaks/4.4.6/"
