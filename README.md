@@ -2,9 +2,9 @@
 
 It's just a **bigger** ship.
 
-![ship-outside](ShipOutside.png)
+![ship-outside](https://github.com/AndreyMrovol/LethalBiggerShip/blob/main/ShipOutside.png)
 
-![ship-inside](ShipInside.png)
+![ship-inside](https://github.com/AndreyMrovol/LethalBiggerShip/blob/main/ShipInside.png)
 
 ## Credits
 
