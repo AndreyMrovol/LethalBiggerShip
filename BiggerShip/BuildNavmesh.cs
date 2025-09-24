@@ -39,6 +39,12 @@ namespace BiggerShip
 			// remove old ship offlinks
 			Transform ShipOffMeshLinks = NavmeshColliders.transform.Find("OffMeshLinks");
 
+			if (ShipOffMeshLinks == null)
+			{
+				Plugin.debugLogger.LogWarning("No OffMeshLinks found under NavMeshColliders");
+				return;
+			}
+
 			ShipOffMeshLinks.Find("ShipLadder")?.gameObject.SetActive(false);
 			ShipOffMeshLinks.Find("ShipLadder2")?.gameObject.SetActive(false);
 
