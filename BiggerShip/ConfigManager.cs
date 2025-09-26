@@ -12,7 +12,8 @@ internal class ConfigManager
 	internal static ConfigEntry<MagnetLeverPlacement> MagnetLever { get; private set; }
 	internal static ConfigEntry<DoorControlPanelPlacement> DoorControlPanel { get; private set; }
 
-	// internal static ConfigEntry<bool> ShipRibs { get; private set; }
+	internal static ConfigEntry<bool> ShipPillars { get; private set; }
+	internal static ConfigEntry<bool> SuitRack { get; private set; }
 
 	public static ConfigManager Instance { get; private set; }
 	public static ConfigFile configFile;
@@ -31,7 +32,13 @@ internal class ConfigManager
 			"Change the door control panel's placement"
 		);
 
-		// ShipRibs = configFile.Bind("Placement", "Ribs", true, "Should the ship have ribs?");
+		ShipPillars = configFile.Bind("Placement", "Pillars", true, "Should the ship have pillars inside?");
+		SuitRack = configFile.Bind(
+			"Placement",
+			"Suit Rack",
+			true,
+			"Should the ship have a suit rack? This is only visual, the suits will still spawn!"
+		);
 	}
 
 	internal static void Init(ConfigFile config)
