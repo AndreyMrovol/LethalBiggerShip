@@ -29,6 +29,14 @@ namespace BiggerShip.Patches
 			}
 
 			__instance.gameObject.GetComponent<Animator>().runtimeAnimatorController = shipDoorsAnimator;
+
+			// retrigger rack update
+			if (Plugin.TooManySuitsCompat.IsModPresent)
+			{
+				Plugin.debugLogger.LogDebug("Reloading TooManySuits!");
+
+				Plugin.TooManySuitsCompat.ReloadSuitRack();
+			}
 		}
 	}
 }

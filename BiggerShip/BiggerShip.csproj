@@ -72,6 +72,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Reference Include="TooManySuits" PrivateAssets="all" Publicize="true">
+            <HintPath>$(LibraryDirectory)/TooManySuits.dll</HintPath>
+        </Reference>
+
         <Reference Include="ScienceBirdTweaks" PrivateAssets="all" Publicize="true">
             <HintPath>$(LibraryDirectory)/ScienceBird.ScienceBirdTweaks.dll</HintPath>
         </Reference>

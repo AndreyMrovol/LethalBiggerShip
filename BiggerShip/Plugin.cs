@@ -12,6 +12,7 @@ namespace BiggerShip
 	[BepInDependency("MrovLib", BepInDependency.DependencyFlags.HardDependency)]
 	[BepInDependency("TestAccount666.ShipWindows", BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency("ScienceBird.ScienceBirdTweaks", BepInDependency.DependencyFlags.SoftDependency)]
+	[BepInDependency("TooManySuits", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Plugin : BaseUnityPlugin
 	{
 		internal static ManualLogSource logger;
@@ -19,7 +20,7 @@ namespace BiggerShip
 
 		internal static Harmony harmony = new(PluginInfo.PLUGIN_GUID);
 
-		// internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
+		internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
 		internal static ScienceBirdTweaksCompat ScienceBirdTweaksCompat = new("ScienceBird.ScienceBirdTweaks");
 
 		private void Awake()
@@ -44,6 +45,7 @@ namespace BiggerShip
 			});
 
 			ScienceBirdTweaksCompat.Init();
+			TooManySuitsCompat.Init();
 
 			// Plugin startup logic
 			Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");

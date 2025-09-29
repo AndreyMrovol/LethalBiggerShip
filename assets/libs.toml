@@ -5,9 +5,9 @@
 # url = "https://thunderstore.io/package/download/TestAccount666/ShipWindows/2.5.1/"
 
 
-# [[library]]
-# name = "TooManySuits"
-# url = "https://thunderstore.io/package/download/TestAccount666/ShipWindows/2.5.1/"
+[[library]]
+name = "TooManySuits"
+url = "https://thunderstore.io/package/download/Verity/TooManySuits/2.0.1/"
 
 
 [[library]]
