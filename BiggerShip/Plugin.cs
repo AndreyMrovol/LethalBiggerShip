@@ -12,6 +12,7 @@ namespace BiggerShip
 	[BepInDependency("MrovLib", BepInDependency.DependencyFlags.HardDependency)]
 	[BepInDependency("TestAccount666.ShipWindows", BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency("ScienceBird.ScienceBirdTweaks", BepInDependency.DependencyFlags.SoftDependency)]
+	[BepInDependency("darmuh.ShipColors", BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency("TooManySuits", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Plugin : BaseUnityPlugin
 	{
