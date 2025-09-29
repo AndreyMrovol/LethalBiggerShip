@@ -13,3 +13,7 @@ url = "https://thunderstore.io/package/download/Verity/TooManySuits/2.0.1/"
 [[library]]
 name = "ScienceBirdTweaks"
 url = "https://thunderstore.io/package/download/ScienceBird/ScienceBird_Tweaks/4.4.6/"
+
+[[library]]
+name = "UniversalRadar"
+url = "https://thunderstore.io/package/download/ScienceBird/Universal_Radar/1.2.3/"

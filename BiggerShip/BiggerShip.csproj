@@ -79,6 +79,10 @@
         <Reference Include="ScienceBirdTweaks" PrivateAssets="all" Publicize="true">
             <HintPath>$(LibraryDirectory)/ScienceBird.ScienceBirdTweaks.dll</HintPath>
         </Reference>
+
+        <Reference Include="UniversalRadar" PrivateAssets="all" Publicize="true">
+            <HintPath>$(LibraryDirectory)/ScienceBird.UniversalRadar.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <!-- minver reference -->
