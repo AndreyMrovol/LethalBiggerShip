@@ -15,12 +15,16 @@ namespace BiggerShip.Compatibility
 				return;
 			}
 
+			Plugin.debugLogger.LogDebug("ScienceBirdTweaks detected, applying patches.");
+			PatchThings();
+		}
+
+		public void PatchThings()
+		{
 			Plugin.harmony.Patch(
 				AccessTools.Method(typeof(ScienceBirdTweaks.Patches.OccupancyPatch), "UpdatePoster"),
 				transpiler: new HarmonyMethod(typeof(ScienceBirdTweaksCompat), nameof(OccupancyTranspiler))
 			);
-
-			Plugin.debugLogger.LogDebug("ScienceBirdTweaks detected, applying patches.");
 		}
 
 		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

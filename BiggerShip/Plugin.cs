@@ -22,9 +22,9 @@ namespace BiggerShip
 
 		internal static Harmony harmony = new(PluginInfo.PLUGIN_GUID);
 
-		internal static TooManySuitsCompat TooManySuitsCompat = new("TooManySuits");
-		internal static ScienceBirdTweaksCompat ScienceBirdTweaksCompat = new("ScienceBird.ScienceBirdTweaks");
-		internal static UniversalRadarCompat UniversalRadarCompat = new("ScienceBird.UniversalRadar");
+		internal static TooManySuitsCompat TooManySuitsCompat;
+		internal static ScienceBirdTweaksCompat ScienceBirdTweaksCompat;
+		internal static UniversalRadarCompat UniversalRadarCompat;
 
 		private void Awake()
 		{
@@ -47,8 +47,13 @@ namespace BiggerShip
 				}
 			});
 
-			ScienceBirdTweaksCompat.Init();
+			TooManySuitsCompat = new TooManySuitsCompat("TooManySuits");
 			TooManySuitsCompat.Init();
+
+			ScienceBirdTweaksCompat = new ScienceBirdTweaksCompat("ScienceBird.ScienceBirdTweaks");
+			ScienceBirdTweaksCompat.Init();
+
+			UniversalRadarCompat = new UniversalRadarCompat("ScienceBird.UniversalRadar");
 			UniversalRadarCompat.Init();
 
 			// Plugin startup logic

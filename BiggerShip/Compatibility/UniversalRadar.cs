@@ -15,6 +15,12 @@ namespace BiggerShip.Compatibility
 				return;
 			}
 
+			Plugin.debugLogger.LogDebug("UniversalRadar detected, applying patches.");
+			PatchThings();
+		}
+
+		public void PatchThings()
+		{
 			Plugin.harmony.Patch(
 				AccessTools.Method(typeof(UniversalRadar.Patches.RadarExtraPatches), "SetCamParameters"),
 				transpiler: new HarmonyMethod(typeof(UniversalRadarCompat), nameof(ShipContourTranspiler))
@@ -24,8 +30,6 @@ namespace BiggerShip.Compatibility
 				AccessTools.Method(typeof(UniversalRadar.Patches.RadarExtraPatches), "SetShipSpriteColour"),
 				transpiler: new HarmonyMethod(typeof(UniversalRadarCompat), nameof(ShipContourTranspiler))
 			);
-
-			Plugin.debugLogger.LogDebug("UniversalRadar detected, applying patches.");
 		}
 
 		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

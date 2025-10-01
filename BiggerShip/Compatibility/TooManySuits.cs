@@ -9,11 +9,16 @@ namespace BiggerShip.Compatibility
 		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public void Init()
 		{
-			if (!IsModPresent)
+			if (!this.IsModPresent)
 			{
 				return;
 			}
 
+			PatchThings();
+		}
+
+		public void PatchThings()
+		{
 			Plugin.harmony.Patch(
 				original: AccessTools.Method(typeof(PaginationController), "DisplayCurrentPage"),
 				prefix: new HarmonyMethod(typeof(BiggerShip.Patches.TooManySuit.TooManySuitsPatches), "DisplaySuitsPrefix")
