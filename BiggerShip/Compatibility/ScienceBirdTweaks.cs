@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using HarmonyLib;
 
 namespace BiggerShip.Compatibility
 {
 	internal class ScienceBirdTweaksCompat(string guid, string version = null) : MrovLib.Compatibility.CompatibilityBase(guid, version)
 	{
+		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public void Init()
 		{
 			if (!this.IsModPresent)
@@ -21,6 +23,7 @@ namespace BiggerShip.Compatibility
 			Plugin.debugLogger.LogDebug("ScienceBirdTweaks detected, applying patches.");
 		}
 
+		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public static IEnumerable<CodeInstruction> OccupancyTranspiler(IEnumerable<CodeInstruction> instructions)
 		{
 			CodeMatcher matcher = new(instructions);

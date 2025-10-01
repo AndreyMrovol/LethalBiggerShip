@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using HarmonyLib;
 using TooManySuits;
 
@@ -5,6 +6,7 @@ namespace BiggerShip.Compatibility
 {
 	internal class TooManySuitsCompat(string guid, string version = null) : MrovLib.Compatibility.CompatibilityBase(guid, version)
 	{
+		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public void Init()
 		{
 			if (!IsModPresent)
@@ -23,6 +25,7 @@ namespace BiggerShip.Compatibility
 			);
 		}
 
+		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public void ReloadSuitRack()
 		{
 			if (!IsModPresent)
