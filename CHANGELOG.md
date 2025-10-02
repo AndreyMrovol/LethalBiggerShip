@@ -1,3 +1,7 @@
+# 1.0.5
+
+- fixed soft-compatibility issues
+
 # 1.0.4
 
 - added compatibility with [TooManySuits](https://thunderstore.io/c/lethal-company/p/Verity/TooManySuits/)
