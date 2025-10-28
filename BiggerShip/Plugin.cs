@@ -33,11 +33,10 @@ namespace BiggerShip
 
 			ConfigManager.Init(Config);
 
-			// #if DEBUG
+#if DEBUG
 			Plugin.logger.LogWarning("Enabling full debug logging!");
 			ConfigManager.Debug.Value = MrovLib.LoggingType.Developer;
-			// #endif
-
+#endif
 
 			MrovLib.EventManager.SceneLoaded.AddListener(scene =>
 			{
