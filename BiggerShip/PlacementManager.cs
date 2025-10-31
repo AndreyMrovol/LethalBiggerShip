@@ -13,7 +13,7 @@ namespace BiggerShip
 			new()
 			{
 				{
-					MagnetLeverPlacement.Front,
+					MagnetLeverPlacement.Back,
 					new ObjectNewPosition
 					{
 						Name = "MagnetLever",
@@ -22,7 +22,7 @@ namespace BiggerShip
 					}
 				},
 				{
-					MagnetLeverPlacement.Back,
+					MagnetLeverPlacement.Front,
 					new ObjectNewPosition
 					{
 						Name = "MagnetLever",
