@@ -186,24 +186,17 @@ namespace BiggerShip
 			}
 
 			// get positions of magnet and charger from config
-			if (ConfigManager.MagnetLever.Value != MagnetLeverPlacement.Back)
-			{
-				MagnetLeverPlacement placement = ConfigManager.MagnetLever.Value;
 
-				if (PlacementManager.MagnetLeverPositions.TryGetValue(placement, out ObjectNewPosition newPos))
-				{
-					PlacementManager.SetNewPlacement(newPos);
-				}
+			MagnetLeverPlacement magnetPlacement = ConfigManager.MagnetLever.Value;
+			if (PlacementManager.MagnetLeverPositions.TryGetValue(magnetPlacement, out ObjectNewPosition newMagnetPos))
+			{
+				PlacementManager.SetNewPlacement(newMagnetPos);
 			}
 
-			if (ConfigManager.ChargeStation.Value != ChargeStationPlacement.Right)
+			ChargeStationPlacement chargePlacement = ConfigManager.ChargeStation.Value;
+			if (PlacementManager.ChargeStationPositions.TryGetValue(chargePlacement, out ObjectNewPosition newChargePos))
 			{
-				ChargeStationPlacement placement = ConfigManager.ChargeStation.Value;
-
-				if (PlacementManager.ChargeStationPositions.TryGetValue(placement, out ObjectNewPosition newPos))
-				{
-					PlacementManager.SetNewPlacement(newPos);
-				}
+				PlacementManager.SetNewPlacement(newChargePos);
 			}
 
 			DoorControlPanelPlacement doorPlacement = ConfigManager.DoorControlPanel.Value;
