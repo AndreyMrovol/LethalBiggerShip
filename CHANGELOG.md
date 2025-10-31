@@ -1,3 +1,10 @@
+# 1.0.6
+
+- removed debug logging being forced on (thanks, `leubesgames`!)
+- fixed lights not illuminating walls correctly (thanks: `arterra003_`, `shaydelity`!)
+- fixed navmesh blocking enemies from getting off the ship (thanks: `leubesgames`, `isma_kenji`, `xuxiaolan`!)
+- fixed `MagnetLever` config using wrong directions
+
 # 1.0.5
 
 - fixed soft-compatibility issues
