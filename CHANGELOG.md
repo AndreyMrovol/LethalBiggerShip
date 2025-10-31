@@ -1,3 +1,7 @@
+# 1.0.7
+
+this is just a readme update cause i forgot
+
 # 1.0.6
 
 - removed debug logging being forced on (thanks, `leubesgames`!)
