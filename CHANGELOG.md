@@ -1,6 +1,10 @@
+# 1.0.8
+
+- fixed navmesh being parented to the ship (thanks, `isma_kenji`!)
+
 # 1.0.7
 
-this is just a readme update cause i forgot
+- updated README with new images
 
 # 1.0.6
 

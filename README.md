@@ -2,9 +2,13 @@
 
 It's just a **bigger** ship.
 
-<img src="https://raw.githubusercontent.com/AndreyMrovol/LethalBiggerShip/refs/heads/main/ShipInside.png" style="width: 600px" />
-
-<img src="https://raw.githubusercontent.com/AndreyMrovol/LethalBiggerShip/refs/heads/main/ShipOutside.png" style="width: 600px" />
+<!-- put those images into a table side-by-side -->
+<table>
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/AndreyMrovol/LethalBiggerShip/refs/heads/main/ShipInside.png" style="width: 400px" /></td>
+		<td><img src="https://raw.githubusercontent.com/AndreyMrovol/LethalBiggerShip/refs/heads/main/ShipOutside.png" style="width: 400px" /></td>
+	</tr>
+</table>
 
 ## Credits
 
