@@ -11,6 +11,7 @@ namespace BiggerShip
 	{
 		private static Dictionary<GameObject, Vector3> OriginalOffMeshLinkPositions = [];
 		private static GameObject NavmeshBlockers;
+		private static GameObject NavmeshShip;
 
 		public static void ReplaceNavmeshes()
 		{
@@ -94,6 +95,7 @@ namespace BiggerShip
 		public static void SpawnNavmeshBlockers(GameObject Environment)
 		{
 			GameObject navmeshBlockerPrefab = null;
+			GameObject navmeshShipPrefab = null;
 
 			if (NavmeshBlockers == null)
 			{
@@ -102,6 +104,15 @@ namespace BiggerShip
 				);
 
 				NavmeshBlockers = navmeshBlockerPrefab;
+			}
+
+			if (navmeshShipPrefab == null)
+			{
+				navmeshShipPrefab = Variables.BiggerShipBundle.LoadAsset<GameObject>(
+					"assets/lethalcompany/biggership/shipnavmeshextended.prefab"
+				);
+
+				NavmeshShip = navmeshShipPrefab;
 			}
 
 			if (navmeshBlockerPrefab != null)
@@ -113,6 +124,15 @@ namespace BiggerShip
 				NavmeshBlockers.transform.localScale = new Vector3(100f, 100f, 100f);
 
 				Plugin.debugLogger.LogDebug($"Instantiated NavmeshBlockers at position {NavmeshBlockers.transform.position}");
+			}
+
+			if (navmeshShipPrefab != null)
+			{
+				NavmeshShip = GameObject.Instantiate(navmeshShipPrefab);
+				NavmeshShip.transform.SetParent(Environment.transform);
+				NavmeshShip.transform.position = new Vector3(-17.5043f, 7.7481f, -16.5813f);
+
+				Plugin.debugLogger.LogDebug($"Instantiated NavmeshShip at position {NavmeshShip.transform.position}");
 			}
 		}
 
