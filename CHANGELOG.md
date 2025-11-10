@@ -1,3 +1,7 @@
+# 1.0.9
+
+- fixed the issue with [The Tourist](https://thunderstore.io/c/lethal-company/p/Zeldahu/LethalAnomalies/) going through the ship (thanks, `zeldahu`!)
+
 # 1.0.8
 
 - fixed navmesh being parented to the ship (thanks, `isma_kenji`!)
