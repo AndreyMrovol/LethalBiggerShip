@@ -1,3 +1,7 @@
+# 1.0.10
+
+- fixed ship model having wrong materials in some places (thanks, `isma_kenji`!)
+
 # 1.0.9
 
 - fixed the issue with [The Tourist](https://thunderstore.io/c/lethal-company/p/Zeldahu/LethalAnomalies/) going through the ship (thanks, `zeldahu`!)
