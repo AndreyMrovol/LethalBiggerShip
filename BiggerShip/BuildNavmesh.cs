@@ -26,8 +26,8 @@ namespace BiggerShip
 			}
 
 			RemoveVanillaNavmesh(EnvironmentObject);
-			ChangeOffMeshLinks(EnvironmentObject);
 			SpawnNavmeshBlockers(EnvironmentObject);
+			ChangeOffMeshLinks(EnvironmentObject);
 
 			RebuildNavmesh(EnvironmentObject);
 
@@ -58,10 +58,15 @@ namespace BiggerShip
 
 		public static void ChangeOffMeshLinks(GameObject Environment)
 		{
-			Transform OffLinkParent = Variables.HangarShip.transform.Find("ShipExtended(Clone)/ShipExtended/ShipNavmesh/OffMeshLinks");
+			Transform OffLinkParent = NavmeshShip.transform.Find("OffMeshLinks");
 
 			foreach (Transform child in OffLinkParent)
 			{
+				if (child.name == "RoofLadder")
+				{
+					continue;
+				}
+
 				GameObject BottomPoint = child.Find("Bottom").gameObject;
 				OffMeshLink link = child.GetComponent<OffMeshLink>();
 
@@ -73,7 +78,7 @@ namespace BiggerShip
 						BottomPoint.transform.position,
 						Vector3.down,
 						out RaycastHit hitInfo,
-						5f,
+						6f,
 						LayerMask.GetMask("Default", "Room")
 					)
 				)

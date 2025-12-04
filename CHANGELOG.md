@@ -1,3 +1,9 @@
+# 1.0.11
+
+- fixed an issue with _navmesh being placed vertically_
+- fixed an issue with some ship materials being applied incorrectly
+- fixed an issue with ship lightning being adjusted incorrectly
+
 # 1.0.10
 
 - fixed ship model having wrong materials in some places (thanks, `isma_kenji`!)
