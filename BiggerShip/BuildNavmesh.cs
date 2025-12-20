@@ -13,10 +13,14 @@ namespace BiggerShip
 		private static GameObject NavmeshBlockers;
 		private static GameObject NavmeshShip;
 
+		private static Logger Logger = new("NVMSH", MrovLib.LoggingType.Developer);
+
 		public static void ReplaceNavmeshes()
 		{
 			Stopwatch stopwatch = new();
 			stopwatch.Start();
+
+			Logger.LogDebug("Starting navmesh replacement process...");
 
 			GameObject EnvironmentObject = GameObject.FindGameObjectWithTag("OutsideLevelNavMesh");
 			if (EnvironmentObject == null)
@@ -37,7 +41,21 @@ namespace BiggerShip
 
 		public static void RemoveVanillaNavmesh(GameObject Environment)
 		{
-			GameObject NavmeshColliders = Environment.transform.Find("NavMeshColliders").gameObject;
+			Logger.LogDebug("Removing vanilla ship navmesh and offmesh links...");
+
+			GameObject NavmeshColliders = Environment.transform.Find("NavMeshColliders")?.gameObject;
+			Logger.LogDebug($"NavmeshCollider is null? {NavmeshColliders == null}");
+
+			if (NavmeshColliders == null)
+			{
+				Logger.LogCustom(
+					"There is no NavMeshColliders object under Environment!",
+					BepInEx.Logging.LogLevel.Warning,
+					MrovLib.LoggingType.Basic
+				);
+				Logger.LogCustom("THIS MIGHT CAUSE MAJOR ISSUES!!!", BepInEx.Logging.LogLevel.Warning, MrovLib.LoggingType.Basic);
+				return;
+			}
 
 			// remove old ship offlinks
 			Transform ShipOffMeshLinks = NavmeshColliders.transform.Find("OffMeshLinks");
@@ -58,6 +76,8 @@ namespace BiggerShip
 
 		public static void ChangeOffMeshLinks(GameObject Environment)
 		{
+			Logger.LogDebug("Adjusting OffMeshLinks for Bigger Ship...");
+
 			Transform OffLinkParent = NavmeshShip.transform.Find("OffMeshLinks");
 
 			foreach (Transform child in OffLinkParent)
@@ -99,6 +119,8 @@ namespace BiggerShip
 
 		public static void SpawnNavmeshBlockers(GameObject Environment)
 		{
+			Logger.LogDebug("Adding navmesh blockers under the ship...");
+
 			GameObject navmeshBlockerPrefab = null;
 			GameObject navmeshShipPrefab = null;
 
@@ -143,6 +165,7 @@ namespace BiggerShip
 
 		public static void RebuildNavmesh(GameObject Environment)
 		{
+			Logger.LogDebug("Rebuilding navmesh...");
 			Environment.GetComponent<NavMeshSurface>().BuildNavMesh();
 		}
 
