@@ -23,9 +23,18 @@ namespace BiggerShip.Patches.TooManySuit
 			for (var i = 0; i < __instance._allSuits.Length; i++)
 			{
 				var suit = __instance._allSuits[i];
+
+				if (suit.gameObject == null)
+				{
+					Plugin.logger.LogWarning("Suit gameobject is null, skipping...");
+					continue;
+				}
+
 				var autoParent = suit.gameObject.GetComponent<AutoParentToShip>();
 				if (autoParent == null)
+				{
 					continue;
+				}
 
 				var shouldShow = i >= startIndex && i < endIndex;
 
