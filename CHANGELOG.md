@@ -1,3 +1,8 @@
+# 1.0.12
+
+- fixed an issue when level navmesh objects being named differently caused dungeon generation to fail (thanks, `cuong1a2b`!)
+- fixed an issue with suit rack causing softlock after being ejected
+
 # 1.0.11
 
 - fixed an issue with _navmesh being placed vertically_
