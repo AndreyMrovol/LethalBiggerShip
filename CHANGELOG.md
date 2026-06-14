@@ -1,3 +1,8 @@
+# 1.0.13
+
+- fixed an issue with the ship dancing when motion blur was enabled
+- fixed an issue with some corners allowing enemies to grab players through walls
+
 # 1.0.12
 
 - fixed an issue when level navmesh objects being named differently caused dungeon generation to fail (thanks, `cuong1a2b`!)
