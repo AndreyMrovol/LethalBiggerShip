@@ -128,5 +128,12 @@
 
         <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(DebugProfile)/debug-$(AssemblyName)" Condition="Exists('$(DebugProfile)')" />
         <Message Importance="high" Text="Copied to $(DebugProfile)/debug-$(AssemblyName)" Condition="Exists('$(DebugProfile)')" />
+
+        <!-- copy every assetbundle from /assets into debugProfile -->
+        <ItemGroup>
+            <AssetBundles Include="$(ProjectDir)../assets/*.assetbundle" />
+        </ItemGroup>
+        <Copy SourceFiles="@(AssetBundles)" DestinationFolder="$(DebugProfile)/debug-$(AssemblyName)" Condition="Exists('$(DebugProfile)')" />
+        <Message Importance="high" Text="Copied assetbundles to $(DebugProfile)/debug-$(AssemblyName)" Condition="Exists('$(DebugProfile)')" />
     </Target>
 </Project>
