@@ -1,3 +1,7 @@
+# 1.0.14
+
+- fixed some geometry bullshit that somehow allowed some enemies sometimes to grab a player from the inside (thanks: `isma_kenji`, `generic_gmd`!)
+
 # 1.0.13
 
 - fixed an issue with the ship dancing when motion blur was enabled
