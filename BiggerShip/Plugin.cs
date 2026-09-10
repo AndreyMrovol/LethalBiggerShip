@@ -25,6 +25,7 @@ namespace BiggerShip
 		internal static TooManySuitsCompat TooManySuitsCompat;
 		internal static ScienceBirdTweaksCompat ScienceBirdTweaksCompat;
 		internal static UniversalRadarCompat UniversalRadarCompat;
+		internal static NavMeshLibCompat NavMeshLibCompat;
 
 		private void Awake()
 		{
@@ -54,6 +55,8 @@ namespace BiggerShip
 
 			UniversalRadarCompat = new UniversalRadarCompat("ScienceBird.UniversalRadar");
 			UniversalRadarCompat.Init();
+
+			NavMeshLibCompat = new NavMeshLibCompat("T-Rizzle.NavMeshLib");
 
 			// Plugin startup logic
 			Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");

@@ -166,7 +166,15 @@ namespace BiggerShip
 		public static void RebuildNavmesh(GameObject Environment)
 		{
 			Logger.LogDebug("Rebuilding navmesh...");
-			Environment.GetComponent<NavMeshSurface>().BuildNavMesh();
+
+			if (Plugin.NavMeshLibCompat.IsModPresent)
+			{
+				Plugin.NavMeshLibCompat.RebakeExteriorNavmesh();
+			}
+			else
+			{
+				Environment.GetComponent<NavMeshSurface>().BuildNavMesh();
+			}
 		}
 
 		public static void RestoreOffMeshLinks()

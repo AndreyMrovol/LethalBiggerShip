@@ -67,6 +67,7 @@
         <PackageReference Include="ScienceBird-ScienceBird_Tweaks" Version="*-*" Publicize="true" PrivateAssets="all"/>
         <PackageReference Include="ScienceBird-Universal_Radar" Version="*-*" Publicize="true" PrivateAssets="all"/>
         <PackageReference Include="darmuh-suitsTerminal" Version="*-*" Publicize="true" PrivateAssets="all"/>
+        <PackageReference Include="TRizzle-NavMeshLib" Version="*-*" Publicize="true" PrivateAssets="all"/>
     </ItemGroup>
 
     <!-- minver reference -->
