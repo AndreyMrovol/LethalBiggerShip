@@ -14,7 +14,7 @@ namespace BiggerShip
 
 		public override bool ShouldLog(LoggingType type)
 		{
-			return LocalConfigManager.Debug.Value >= type;
+			return ConfigManager.Debug.Value >= type;
 		}
 	}
 }
