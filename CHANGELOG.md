@@ -1,3 +1,8 @@
+# 1.0.15
+
+- fixed an issue with `Inside` navmesh not being baked in (thanks, `tkronix`!)
+- added compatibility with [NavMeshLib](https://thunderstore.io/c/lethal-company/p/TRizzle/NavMeshLib/) (thanks, `trizzle3337`!)
+
 # 1.0.14
 
 - fixed some geometry bullshit that somehow allowed some enemies sometimes to grab a player from the inside (thanks: `isma_kenji`, `generic_gmd`!)
